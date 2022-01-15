@@ -5,8 +5,10 @@ const resolvers = {
         // me query
 
         // get single user
-        user: async (parent, { id, username }) => {
-            return User.findOne({ id, username });
+        user: async (parent, { _id, username }) => {
+            return User.findOne({ 
+                $or: [{ _id }, { username }]
+            });
         },
 
         // get all users
