@@ -69,19 +69,20 @@ const SearchBooks = () => {
       return false;
     }
 
+    const user = Auth.getProfile();
+    const userId = user.data._id;
+    console.log(userId);
+
     try {
       // const response = await saveBook(bookToSave, token);
-      const user = Auth.getProfile();
-      const userId = user.data._id;
-      console.log(userId);
-      const response = await saveBookGraphQL({
-        variables: { userId, bookToSave}
-      });
-      // console.log(response);
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      await saveBookGraphQL({
+        variables: { userId, bookToSave }
+      });
+
+      // if (!response.ok) {
+      //   throw new Error('something went wrong!');
+      // }
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
