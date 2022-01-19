@@ -77,7 +77,7 @@ const SearchBooks = () => {
       // const response = await saveBook(bookToSave, token);
 
       await saveBookGraphQL({
-        variables: { userId, bookToSave }
+        variables: { id: userId, content: bookToSave }
       });
 
       // if (!response.ok) {

@@ -8,7 +8,7 @@ import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const LoginForm = () => {
-  const [loginUserGraphQL, { error }] = useMutation(LOGIN_USER);
+  const [loginUserGraphQL] = useMutation(LOGIN_USER);
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
